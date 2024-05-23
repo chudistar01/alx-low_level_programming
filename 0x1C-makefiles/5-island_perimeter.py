@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""island perimeter"""
+
 
 def island_perimeter(grid):
     """ Return perimeter of an islan.
@@ -7,17 +9,17 @@ def island_perimeter(grid):
     Returns:
         perimeter of a list
     """
-    width = len(grid[0])
-    height = len(grid)
-    edges = 0
-    size = 0
-
-    for i in range(height):
-        for j in range(width):
-            if grid[i][j] == 1:
-                size += 1
-                if (j > 0 and grid[i][j - 1] == 1):
-                    edges += 1
-                if (i > 0 and grid[i - 1][j] == 1):
-                    edges += 1
-    return size * 4 - edges * 2
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if grid[i][j] == 0:
+                continue
+            perimeter += 4
+            if i > 0:
+                perimeter = perimeter - grid[i - 1][j]
+            if i < len(grid) - 1:
+                perimeter = perimeter - grid[i + 1][j]
+            if j > 0:
+                perimeter = perimeter - grid[i][j - 1]
+            if j < len(grid[0]) - 1:
+                perimeter = perimeter - grid[i][j + 1]
+    return perimeter

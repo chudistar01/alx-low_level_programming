@@ -1,13 +1,15 @@
 #include "search_algos.h"
 /**
- * _binary_search: searches for value in an array
+ * _binary_search - searches for value in an array
  * @array: array to be searched
  * @left: starting index with a subarray
  * @right: the ending index of a subarray
  * @value: value to be searched
  * Return: index
+ *
+ * Description: prints sub array
  */
-int _binary_search(int array, size_t left, size_t right, int value)
+int _binary_search(int *array, size_t left, size_t right, int value)
 {
 	size_t i;
 
@@ -30,5 +32,31 @@ int _binary_search(int array, size_t left, size_t right, int value)
 			left = i + 1;
 	}
 	return (-1);
+}
+
+/**
+ * exponential_search - searches an array
+ *@array: array to be searched
+ *@size: size of the array
+ *@value:value to be searched
+ *Return: index
+ *
+ * Description: prints main array
+ */
+int exponential_search(int *array, size_t size, int value)
+{
+	size_t i = 0, right;
+
+	if (array == NULL)
+		return (-1);
+
+	if (array[0] != value)
+	{
+		for (i = 1; i < size && array[i] <= value; i = i * 2)
+			printf("Value checked array[%ld] = [%d]\n", i, array[i]);
+	}
+	right = i < size ? i : size - 1;
+	printf("Value found between indexes [%ld] and [%ld]\n", i / 2, right);
+	return (_binary_search(array, i / 2, right, value));
 }
 

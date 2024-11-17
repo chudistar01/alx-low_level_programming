@@ -11,7 +11,7 @@
  */
 char *create_array(unsigned int size, char c)
 {
-	char *array_of_char;
+	char *array;
 
 	unsigned int i;
 
@@ -20,24 +20,18 @@ char *create_array(unsigned int size, char c)
 		return (NULL);
 	}
 
-	array_of_char = malloc(sizeof(char) * size);
+	array = malloc(sizeof(char) * size);
 
-	if (array_of_char == NULL)
+	if (array == NULL)
 	{
-		return (NULL);
-	}
-	else
-	{
-		i = 0;
-
-		while (i < size)
-		{
-			*(array_of_char + i) = c;
-			i++;
-		}
-
-		*(array_of_char + i) = '\0';
+	  return (NULL);
 	}
 
-	return (array_of_char);
+	for (i = 0; i < size; i++)
+	{
+	  *(array + i) = c;
+	}
+
+	return (array);
 }
+	  

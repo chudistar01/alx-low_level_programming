@@ -35,22 +35,14 @@ char *_strdup(char *str)
 	{
 		return (NULL);
 	}
-	else
+	for (i = 0; i < length; i++)
 	{
-		i = 0;
-
-		while (i <length)
-		{
-			new_string[i] = str[i];
-			i++;
-		}
-
-		new_string[i] = '\0';
+	  *(new_string + i) = *(str + i);
 	}
+	*(new_string + length) = '\0';
 
 	return (new_string);
 }
-
 
 
 

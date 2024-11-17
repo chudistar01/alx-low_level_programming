@@ -13,8 +13,14 @@ char *_strdup(char *str)
 	char *new_string;
 
 	unsigned int length;
-
 	unsigned int i;
+
+	if (str == NULL)
+	{
+	  return (NULL);
+	}
+	
+	    
 
 	length = 0;
 
@@ -22,8 +28,7 @@ char *_strdup(char *str)
 	{
 		length++;
 	}
-	length++;
-
+	
 	new_string = malloc(sizeof(char) * (length + 1));
 
 	if (new_string == NULL)
